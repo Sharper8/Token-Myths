@@ -5,8 +5,8 @@ Legend: `[ ]` todo · `[~]` in progress · `[x]` done. Primary = next thing an a
 ## Phase 0 — infra & scaffold
 - [x] Public repo + SPEC + vault entity + MC registry (2026-11-21)
 - [~] PRIMARY: MLX model downloads on M4 Pro (Qwen3-32B-4bit, Qwen3-8B-4bit, Llama-3.1-8B-4bit) → `~/token-myths-logs/dl-*.log`
-- [ ] Grill pass on SPEC + identity form → record verdict in vault note
-- [ ] Vendor real persona texts (caveman full+micro, ponytail, chisle, i-have-adhd, concise, combined) with source URL+hash
+- [x] Grill pass: GO-WITH-CHANGES, M1–M6 applied to SPEC + vault note (2026-11-21)
+- [x] Vendor real persona texts (caveman full+micro, ponytail, chisle, i-have-adhd, concise, combined) with source URL+hash
 - [ ] New VPS onboarding (BLOCKED: Sylva must share VW item "apps VPS hetzner" to agents collection; OpenBao sealed blocker open)
 
 ## Phase 1 — harness core
@@ -19,9 +19,9 @@ Legend: `[ ]` todo · `[~]` in progress · `[x]` done. Primary = next thing an a
 - [ ] pytest green + baseline-vs-baseline noise-floor cell
 
 ## Phase 2 — runs
-- [ ] Thin slice smoke cell end-to-end on Mac (qwen3-8b baseline/en/low/explain n=2) + payload readback
+- [x] Thin slice smoke cells end-to-end on Mac (baseline/caveman-full/combined × en + baseline zh) + scorer validation on real output
 - [ ] Offline tokenizer arm (no model calls) → FIRST publishable result
-- [ ] Core factorial full run (checkpointed, hours-days on MLX)
+- [ ] Core factorial run (checkpointed; grill-corrected budget: ≤8000 runs ≈5–8 days continuous on MLX, NOT hours-days)
 - [ ] Validation arm: sparse key cells on OR :free + Gemini free
 
 ## Phase 3 — publication

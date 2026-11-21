@@ -17,32 +17,47 @@ harness.
 
 - **H1 persona ceiling**: prose-persona tricks cluster at ≤~10% real savings (HN mmastrac hypothesis).
 - **H2 mechanism split**: behavior-changing skills (ponytail: less code) > prose-compression skills (caveman-class).
-- **H3 tokenizer flip**: Chinese costs more on Western tokenizers, less on Chinese-vocab tokenizers — shown on BOTH the offline token-count axis (exact, tiktoken/HF) and the behavioral axis (local Qwen vs Llama).
-- **H4 reasoning interaction**: savings and quality deltas measured at reasoning low AND high (JetBrains gap).
-- **H5 combination**: the combined "prehistoric-ADHD-Chinese" persona — additive or interference collapse.
+- **H3 tokenizer flip (offline-only claim)**: Chinese costs more on Western tokenizers, less on
+  Chinese-vocab tokenizers — claimed ONLY on the offline exact-count axis (Qwen-vs-Llama behavioral
+  comparisons confound tokenizer with vendor/size/training: grill F3). Behavioral language arm is
+  exploratory: savings reported conditioned on quality-pass, phrased "consistent with", never causal.
+- **H4 reasoning interaction**: savings and quality deltas at reasoning low AND high, Qwen3 only
+  (Llama has no thinking toggle: grill F2). Not comparable across endpoints.
+- **H5 combination**: downgraded (grill): "does the chimera beat its best single component?"
+  Additivity/interference is NOT claimable without a 2³ sub-factorial; optional cheap arm:
+  8-cell (caveman × adhd × chinese presence/absence) × en × low × qwen3-8b × one family.
 - **H6 negative results**: some viral skills *increase* cost (rtk precedent, +7.6% JetBrains).
 
 ## Experimental design
 
-### Axes (full factorial on the core arm)
+### Axes (fractional factorial — grill M2)
 
-- **Persona**: `baseline`, `caveman-full`, `caveman-micro` (6-line), `ponytail`, `chisle`,
-  `i-have-adhd`, `concise-style` (vendor-style one-liner control), `combined` (caveman×adhd×chinese
-  chimera). Persona texts are the REAL published skill files, vendored verbatim under
-  `bench/personas/` with source URL + commit hash.
-- **Language**: `en`, `zh` (prompts AND expected output language; translations reviewed, same task
-  semantics). Offline arm adds exact token counts for every prompt across tokenizers.
-- **Reasoning effort**: `low`, `high` (Qwen3 thinking toggle on local; effort param where supported).
-- **Model/tokenizer family**: local `qwen3-32b` (Chinese-vocab, thinking toggle) + `llama-3.1-8b`
-  (Western BPE) + `qwen3-8b` (matched-size pair control). Validation arm (sparse key cells):
-  OpenRouter `:free` + Gemini free tier. NO paid plans for test runs (Sylva constraint).
+**Experimental unit = (persona × lang × reasoning × model × task_id), N=10 per task** (grill M1:
+N per family would be pseudoreplication; CIs cluster-bootstrap at task level, analysis script
+committed+frozen before the full run).
+
+- **Persona**: `baseline`, `filler-control` (length-matched to caveman-full, irrelevant style
+  content — grill M3, non-negotiable before packaging any combined skill), `caveman-full`,
+  `caveman-micro` (6-line), `ponytail`, `chisle`, `i-have-adhd`, `concise-style`, `combined`.
+- **Language**: `en`, `zh`. Difficulty-equivalence pretest first (grill M5): baseline solve-rate
+  EN vs ZH within tolerance before task versions enter the matrix; table published in appendix.
+- **Reasoning effort**: `low`, `high` — **Qwen3 models only** (thinking toggle). Absent for Llama.
+- **Models**: `qwen3-8b` = full-factorial workhorse. `qwen3-32b` = sparse key-cell grid only
+  (baseline, caveman-full, caveman-micro, combined × en/zh × low × all families). `llama-3.1-8b` =
+  H3-relevant cells + offline arm only. Validation arm: sparse snapshot cells on OR `:free` +
+  Gemini free, exact model revision + date per run, labeled "snapshot validation" (grill F8).
+  NO paid plans for test runs (Sylva constraint).
 - **Task family**: `codegen` (unit-tested, docker no-net sandbox), `debug` (known-bug fix, test-gated),
   `extract` (JSON exact-match), `explain` (fact-coverage checklist, rubric-scored deterministically).
 
 ### Controls (mandatory)
 
+- **Stateless fresh context per run; unique run salt; prefix caching disabled or salted** (grill M5/F7).
 - Injection cost reported per single-call AND amortized multi-turn (1/10/50 turns, cache on/off model).
-- Same base task prompts across all arms; paired seeds; N≥10 per core cell; bootstrap 95% CIs.
+- Same base task prompts across all arms; paired seeds; N=10 per task; task-level cluster bootstrap.
+- **Primary metric (pre-registered, grill M4/F5): quality gate FIRST — modeled cost and token deltas
+  computed on quality-passing runs only; cost = modeled at published API prices, never "measured".**
+  Raw savings = secondary. turns-to-correct = secondary (repair protocol interacts with persona, F7).
 - Offline tokenizer arm needs NO model calls: exact token counts of all prompts+reference outputs
   across `o200k`, `cl100k`, Qwen2/3, GLM, Llama tokenizers → H3 provable for frontier models for free.
 
