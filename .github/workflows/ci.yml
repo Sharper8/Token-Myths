@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f pyproject.toml ]; then pip install -e . || true; fi
+      # Error tracking: errors ship to a self-hosted GlitchTip instance via the
+      # GLITCHTIP_DSN env var (see .env.example). To tag CI runs too, add
+      # GLITCHTIP_DSN as a repo secret and export it in this job's env.
+      - name: Run tests
+        run: python -m pytest -q
