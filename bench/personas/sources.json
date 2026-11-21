@@ -1,0 +1,34 @@
+{
+  "caveman-full": {
+    "repo": "JuliusBrussee/caveman",
+    "path": "skills/caveman/SKILL.md",
+    "commit": "a192894723a8f47e7f504c7b5041967ff1f18e55",
+    "url": "https://raw.githubusercontent.com/JuliusBrussee/caveman/a192894723a8f47e7f504c7b5041967ff1f18e55/skills/caveman/SKILL.md",
+    "sha256": "415d43518f2b1a9498c15a445d4657117b129ee5e81b19454ce348439cc6672b",
+    "bytes": 4678
+  },
+  "ponytail": {
+    "repo": "DietrichGebert/ponytail",
+    "path": "skills/ponytail/SKILL.md",
+    "commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+    "url": "https://raw.githubusercontent.com/DietrichGebert/ponytail/96608e078b2d5ea607c5c3b8b5a54d1c1fba6846/skills/ponytail/SKILL.md",
+    "sha256": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+    "bytes": 3496
+  },
+  "chisle": {
+    "repo": "JayPokale/Chisle",
+    "path": "skills/chisle/SKILL.md",
+    "commit": "bda2483c27e66f84e16b7b1ece9cfaf74c839753",
+    "url": "https://raw.githubusercontent.com/JayPokale/Chisle/bda2483c27e66f84e16b7b1ece9cfaf74c839753/skills/chisle/SKILL.md",
+    "sha256": "e8da06defb1d87c335da09a24f0f08301e639ed767b55e15dc2d06496ea7ab12",
+    "bytes": 3499
+  },
+  "i-have-adhd": {
+    "repo": "ayghri/i-have-adhd",
+    "path": "skills/i-have-adhd/SKILL.md",
+    "commit": "1ecea1993b7fce257ffbd686c070948b5e07eda6",
+    "url": "https://raw.githubusercontent.com/ayghri/i-have-adhd/1ecea1993b7fce257ffbd686c070948b5e07eda6/skills/i-have-adhd/SKILL.md",
+    "sha256": "88955c019bbb1419ff4b49dbb1f80a867467de6233d7865af2e06a7d7b76c7d3",
+    "bytes": 7201
+  }
+}

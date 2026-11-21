@@ -17,3 +17,5 @@ build/
 secrets/
 
 .DS_Store
+.venv/
+__pycache__/
